@@ -1,0 +1,4 @@
+
+class Message {
+	bool   Result;
+}
