@@ -1,4 +1,0 @@
-
-class Message {
-	bool MobsActive;
-}

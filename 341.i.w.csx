@@ -1,4 +1,0 @@
-
-class Message {
-	byte Result;
-}
