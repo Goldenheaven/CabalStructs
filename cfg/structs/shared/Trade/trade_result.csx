@@ -1,0 +1,28 @@
+enum TradeResult : byte {
+	Invalid			= 0,
+	SearchFailed	= 28,
+	SystemFailure,
+	Progress,
+	Reset,
+	Disabled,
+	Denied,
+	Request,
+	Ready,
+	ArrangeFailed,
+	_u0,
+	RequestList,
+	Completed,
+	AddSuccess,
+	RemoveSuccess,
+	RequestCancel,
+	SubmitCancel,
+	TradeCancel,
+	Accepted,
+	Rejected,
+
+	Submit			= 48,
+    AntiOnlineGame,
+    IWarReservedForBFEntry,
+    AllSubmit,
+    SecureSubmit
+}
