@@ -18,6 +18,10 @@ struct Service {
 	int		BoxDropRate;
 	int		InventoryIII;
 	int		InventoryIV;
+	int		InventoryV;
+	int		InventoryVI;
+	int		InventoryVII;
+	int		InventoryVIII;
 	int		Warehouse;
 	int		CostumeWarehouse;
 	int		ExtendPetSlot;
@@ -36,6 +40,15 @@ struct Service {
 	byte	RequestAmitySlots;
 	int		Reserved2;
 	int		u4;
+	int		u5;
+	int		u6;
+	int		u7;
+	int		u8;
+	int		u9;
+	int		u10;
+	int		u11;
+	int		u12;
+	int		u13;
 }
 
 class Message {
