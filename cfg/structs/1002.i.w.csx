@@ -19,13 +19,16 @@ class Event {
 	uint			u1;
 	uint			WorldID;
 	uint			NpcID;
-	[Length(130)]
-	byte[]			Padding;
+	[Length(32)]
+	uint[]			u2;
+    ushort          u3;
+    uint            u4;
+    ulong           u5;
 	string			EventName;
 	[LengthFor("Items")]
 	ushort			Count;
 	EventItem[]		Items;
-	uint			u3;
+	uint			u6;
 }
 
 class Message {
