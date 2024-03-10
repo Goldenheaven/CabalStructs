@@ -25,7 +25,7 @@ class Event {
 	[LengthFor("Items")]
 	ushort			Count;
 	EventItem[]		Items;
-	uint			u2;
+	uint			u3;
 }
 
 class Message {

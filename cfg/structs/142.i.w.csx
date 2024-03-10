@@ -557,22 +557,24 @@ class Message {
 	int						ForceGems;
 	[LengthFor("ForceGemConsumables")]
 	int						ForceGemConsumableCount;
-	[Length(3348)]
+	[Length(3340)]
 	byte[]					UnkXX;
 	ulong					Unk115;
+	int						SpecialBoxID;
+	int						SpecialBoxID1;
 	Time64					Unk103;
 	Time64					Unk102;
 	uint					Unk104;
 	ulong					Unk105;
+	ulong					Unk106;
 	Time64					Unk001;
 	Time64					Unk002;
 	Time64					Unk003;
 	uint					Unk004;
 	ulong					Unk005;
-	ulong					Unk006;
 	[LengthFor("Name", Operator.Add, 1)]
 	byte					NameLength;
-		string					Name;
+	string					Name;
 	Item[]					Equipment;
 	ushort[]				LockedEquipment;
 	Item[]					Inventory;

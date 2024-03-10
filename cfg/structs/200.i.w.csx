@@ -49,14 +49,14 @@ enum EquipmentSlot : byte {
 	CostumeBike,
 }
 
-struct EquippedItem {
+class EquippedItem {
 	EquipmentSlot	Slot;
 	ItemKind		Kind;
 	ulong			Option;
 	Period			Duration;
 }
 
-struct Buff {
+class Buff {
 	ushort	ID;
 	byte	Level;
 	uint	u0;
@@ -77,12 +77,17 @@ class Character {
 	ObjectIndexData	UserId;
 	uint			Level;
 	ushort			OverlordLevel;
+	uint			un0;
+	uint			un1;
+	uint			un2;
 	byte			ForceWingGrade;
 	byte			ForceWingLevel;
-	int				MaximumHP;
-	int				CurrentHP;
+	ulong			MaximumHP;
+	ulong			CurrentHP;
 	int				MaximumRage;
 	int				CurrentRage;
+	uint			un3;
+	uint			un4;
 	int				MoveSpeed;
 	ushort			PositionX;
 	ushort			PositionY;
@@ -99,6 +104,8 @@ class Character {
 	bool			IsDead;
 	[LengthFor("Equipment")]
 	byte			EquipmentCount;
+	[LengthFor("UnknownBuffs")]
+	byte			UnkBuffCount;
 	bool			GMFlag;
 	[TypeFor("PersonalShop")]
 	PShopType		PersonalShopType;
@@ -106,7 +113,36 @@ class Character {
 	ushort			u2;
 	ushort			u3;
 	StyleEtc		StyleEtc;
+	[LengthFor("ActiveBuffs")]
+	byte			ActiveBuffCount;
+	[LengthFor("Debuffs")]
+	byte			DeBuffCount;
+	[LengthFor("GMBuffs")]
+	byte			GMBuffCount;
+	[LengthFor("PassiveBuffs")]
+	byte			PassiveBuffCount;
+	byte			Bringer;
+	uint			u4;
+	ushort			UnkTitle1;
+	ushort			UnkTitle2;
+	ushort			DisplayedTitle;
+	ushort			EventTitle;
+	ushort			WarTitle;
+	ushort			AbilityTitle;
+	[LengthFor("Name", Operator.Add, 1)]
+	byte			NameLength;
+	string			Name;
+	[LengthFor("GuildName")]
+	byte			GuildNameLength;
+	string			GuildName;
+	EquippedItem[]	Equipment; 
+	object			PersonalShop;
+	Buff[]			ActiveBuffs;
+	Buff[]			PassiveBuffs;
+	Buff[]			GMBuffs;
+	
 
+	
 	enum PShopType : byte {
 		NoPShop,
 		PShop,
@@ -118,28 +154,30 @@ class Character {
 		[LengthFor("Message")]
 		byte	Length;
 		string	Message;
-		ulong	u0;
+		ulong	psu0;
 	}
+	
+	
 
 	enum PetType {
 		NoPet,
 		Pet,
 	}
 
-	class NoPet {}
+	struct NoPet {}
 
-	class Pet {
+	struct Pet {
 		[LengthFor("Name", Operator.Mul, 8)]
-		byte		Style;
-		byte		u0;
-		byte		u1;
-		byte		u2;
-		byte		u3;
-		string		Name;
-		byte		u4;
-		byte		u5;
-		byte		u6;
-		byte		u7;
+		byte		PetStyle;
+		byte		ptu0;
+		byte		ptu1;
+		byte		ptu2;
+		byte		ptu3;
+		string		PetName;
+		byte		ptu4;
+		byte		ptu5;
+		byte		ptu6;
+		byte		ptu7;
 	}
 	
 	int GetPrimaryPetType()
@@ -150,8 +188,7 @@ class Character {
 }
 
 class Message {
-	[LengthFor("Characters")]
 	byte		Count;
 	NewUserType	Type;
-	Character[]	Characters;
+	Character	Characters;
 }
