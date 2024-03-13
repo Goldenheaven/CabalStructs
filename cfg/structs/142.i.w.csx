@@ -398,21 +398,19 @@ class Message {
 	uint					Intelligence;
 	uint					StatPoints;
 	uint					SkillRank;
-	uint					Reserved;
-	uint					CurrentUnk1;
-	uint					MaximumUnk1;
-	uint					CurrentHP;
-	uint					MaximumHP;
-	uint					CurrentMP;
+	uint					MagicSkillRank; /* Not in use */
+	ulong					MaximumHP;
+	ulong					CurrentHP;
 	uint					MaximumMP;
+	uint					CurrentMP;
 	ushort					MaximumSP;
 	ushort					CurrentSP;
-	int						Rage;
-	int						DungeonPoints;
+	uint					MaximumRage;
+	uint					CurrentRage;
 	int						MaximumBP;
 	int						CurrentBP;
-	/* This is not a DateTime... Why would you set it as such? */
-	long					DungeonPointsLifetime;
+	int						DungeonPoints;
+	int						DungeonPointsLifetime;
 	int						CharacterID;
 	int						SkillXP;
 	int						SkillXPLevel;
@@ -466,17 +464,18 @@ class Message {
 	int						AXP;
 	[LengthFor("EssenceRunes")]
 	byte					EssenceRuneCount;
-	byte					UnknownDailyMissionCount;
 	/* 16 + EssenceRuneSlots */
-	ushort					EssenceRuneSlots;
+	byte					EssenceRuneSlots;
 	[LengthFor("BlendedRunes")]
-	ushort					BlendedRuneCount;
+	byte					BlendedRuneCount;
 	/* 3 + BlendedRuneCount */
-	ushort					BlendedRuneSlots;
+	byte					BlendedRuneSlots;
+	byte					UnknownCount;
+	byte					UnknownCount1;
 	[LengthFor("BlessingBeads")]
-	ushort					BlessingBeadCount;
+	byte					BlessingBeadCount;
 	[LengthFor("PremiumServices")]
-	ushort					PremiumServiceCount;
+	byte					PremiumServiceCount;
 	[LengthFor("Quests")]
 	ushort					QuestCount;
 	[Length(256)]
@@ -491,6 +490,7 @@ class Message {
 	byte[]					MissionDungeonFlags;
 	[Length(4097)]
 	byte[]					UnknownFlags;
+	uint					UnknownDailyMissionCount;
 	int						HelpWindow;
 	Pet						Pet;
 	Pet						PetExtended;
@@ -521,7 +521,7 @@ class Message {
 	uint					AchievementCount;
 	[LengthFor("Titles")]
 	uint					TitleCount;
-	uint					UnknownCount1;
+	uint					UnknownCount2;
 	[LengthFor("Crafts")]
 	uint					CraftCount;
 	byte					u17;
@@ -572,6 +572,8 @@ class Message {
 	Time64					Unk003;
 	uint					Unk004;
 	ulong					Unk005;
+	[Length(48)]
+	byte[]					Unk006;
 	[LengthFor("Name", Operator.Add, 1)]
 	byte					NameLength;
 	string					Name;

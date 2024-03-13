@@ -1,7 +1,7 @@
 
 class Pet {
 	[LengthFor("Name", Operator.Mul, 8)]
-	byte		Style;
+	PetStyle Style;
 	byte		u0;
 	byte		u1;
 	byte		u2;
@@ -10,5 +10,4 @@ class Pet {
 	byte		u4;
 	byte		u5;
 	byte		u6;
-	byte		u7;
 }
