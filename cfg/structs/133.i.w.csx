@@ -2,7 +2,7 @@ using Shared.Character;
 using Shared.Item;
 using Shared;
 
-class AppearenceItem {
+class ItemAppearence {
 	ushort   SlotId;
 	uint	 Kind;
 	Period   Duration;
@@ -23,54 +23,22 @@ class Character {
 	[Length(17)]
 	string		Name;
 	long		HonorPoint;
+    uint		u0;
+    uint		u1;
+    uint		u2;
+    uint		u3;
+    uint		u4;
+    uint		u5;
+    uint		u6;
 	ulong		Alz;
-	byte		Map;
+	byte		WorldIndex;
 	short		Y;
 	short		X;
 	ushort		EquipmentCount;
-	Item	Helmet;
-	Item	Suit;
-	Item	Gloves;
-	Item	Boots;
-	Item	RightHand;
-    Item    LeftHand;
-	Item	Epaulet;
-	Item	Amulet;
-	Item	Ring1;
-	Item	Ring2;
-	Item	Bike;
-	Item	Pet;
-	Item	None;
-	Item	Earing1;
-	Item	Earing2;
-	Item	Bracelet1;
-	Item	Bracelet2;
-	Item	Ring3;
-	Item	Ring4;
-	Item	Belt;
-	Item	PetEx;
-	Item	Charm1;
-	Item	Effector1;
-	Item	Effector2;
-	Item	LinkedWeapon;
-	Item	WeaponCostume1;
-	Item	WeaponCostume2;
-	Item	HeadGear;
-	Item	Costume;
-	Item	DialogBubble;
-	Item	Talisman;
-	Item	CostumeNoOptions;
-	Item	Carnelian;
-	Item	Arcana1;
-	Item	Arcana2;
-	Item	VehicleCostume;
-	Item	VehicleCostumeNoOptions;
-	Item	ForceWingCostume;
-	Item	ForceWingCostumeNoOptions;
-	[Length(8)]
-	Item[]	UnknownItems;
-	[Length(47)]
-	AppearenceItem[] UnknownAppearanceItems;
+    [Length(50)]
+	Item[]	Items;
+	[Length(50)]
+	ItemAppearence[] ItemAppearances;
 }
 
 enum SlotOpener : uint
