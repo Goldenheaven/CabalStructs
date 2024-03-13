@@ -1,6 +1,6 @@
 
 class Message {
-	uint	u0;
+	uint	SubMessageType;
 	[Length(257)]
 	byte[]	UserPass;
 }

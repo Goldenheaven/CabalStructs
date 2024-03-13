@@ -17,17 +17,18 @@ struct CharCount {
 
 class Message {
 	bool		KeepAlive;
-	uint		u0;
-	uint		u1;
-	uint		u2;
+	int		u0;
+	int		u1;
+	int		LoginStatus;
 	[TypeFor("SubMessage")]
 	VariantType	SubMessageType;
-	ResultType	Result;
+	ResultType	AccountStatus;
 	object		SubMessage;
 
 	enum VariantType {
 		EmptySubMessage	= 0,
 		SubMessage17	= 17,
+        SubMessage25    = 25,
 	}
 
 	class EmptySubMessage {}
@@ -58,4 +59,11 @@ class Message {
 		[Length(128)]
 		CharCount[]	CharCount;
 	}
+
+    class SubMessage25 {
+        uint        u0;
+        ulong        u1;
+        uint        u2;
+        ulong        u3;
+    }
 }

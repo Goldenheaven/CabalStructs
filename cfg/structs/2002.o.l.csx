@@ -1,7 +1,5 @@
 
 class Message {
-	[Length(65)]
+	[Length(129)]
 	string	UserName;
-	[Length(64)]
-	byte[]	unk;
 }

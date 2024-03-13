@@ -7,4 +7,6 @@ enum Result : int {
 
 class Message {
 	Result	Result;
+    uint    u0;
+    uint    u1;
 }
