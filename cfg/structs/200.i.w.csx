@@ -198,8 +198,8 @@ class Character {
 
 	class Pet {
 		[LengthFor("Name", Operator.Mul, 8)]
-		PetStyle Style;
-		byte		u0;
+		PetStyle 	Style;
+		byte		PetSlot;
 		byte		u1;
 		byte		u2;
 		byte		u3;

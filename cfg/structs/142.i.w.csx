@@ -490,7 +490,8 @@ class Message {
 	byte[]					MissionDungeonFlags;
 	[Length(4097)]
 	byte[]					UnknownFlags;
-	uint					UnknownDailyMissionCount;
+	[LengthFor("DailyQuests")]
+	uint					DailyQuestCount;
 	int						HelpWindow;
 	Pet						Pet;
 	Pet						PetExtended;
@@ -587,6 +588,7 @@ class Message {
 	BlessingBead[]			BlessingBeads;
 	PremiumService[]		PremiumServices;
 	Quest[]					Quests;
+	ushort[]				DailyQuests;
 	Mercenary[]				Mercenaries;
 	/* ChangeShape Items Equipped */
 	ChangeShapeItem[]		ChangeShapeEquipped;
