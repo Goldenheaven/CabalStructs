@@ -3,6 +3,6 @@ class Message {
 	uint ItemID;
     byte RequestSlotIndex;
     uint RequestCode;
-    uint Amity;
+    uint RequestCraftExp;
     byte Success;
 }

@@ -206,17 +206,23 @@ class Quest {
 	}
 
 	int GetObjectivesType() {
-		var enc = ReadEncFile("enc/quest.enc");
-		var xml = LoadXml(enc);
-		var quest = (from q in xml.Root.Element("cabal_quest").Descendants("quest")
-					 where (int)q.Attribute("quest_id") == Id
-					 select q
-					).First();
+        var enc = ReadEncFile("enc/quest.enc");
+        var xml = LoadXml(enc);
+        var quests = (from q in xml.Root.Element("cabal_quest").Descendants("quest")
+                    where (int)q.Attribute("quest_id") == Id
+                    select q
+                    );
 
-		return (from m in quest.Descendants("mission")
-				where (int)m.Attribute("type") == 0 || (int)m.Attribute("type") == 1
-				select m
-				).Count();
+        if (quests.Count() > 0) {
+            var quest = quests.First();
+                
+            return (from m in quest.Descendants("mission")
+                    where (int)m.Attribute("type") == 0 || (int)m.Attribute("type") == 1
+                    select m
+                    ).Count();
+        }
+
+        return 0;
 	}
 }
 
@@ -343,28 +349,28 @@ class CollectionList {
     ushort[] Slot;
 }
 
-class Message {
-	uint					LobbyEntryOrder;
-	uint					LobbySecondsLeft;
-	uint					LobbyStartTime;
-	bool					IsLobbyTimerStarted;
-	uint					BattlefieldSecondsLeft;
-	uint					BattlefieldStartTime;
-	bool					IsBattlefieldTimerStarted;
-	uint					CapellaScore;
-	uint					ProcyonScore;
-	uint					CapellaPoints;
-	uint					ProcyonPoints;
-	uint					MaxPlayersInWar;
-	uint					CapellaBattlefieldEntryCount;
-	uint					ProcyonBattlefieldEntryCount;
-	uint					WarMap;
-	bool					HasWarehousePassword;
-	bool					HasInventoryPassword;
-	bool					WarehouseLocked;
-	bool					InventoryLocked;
-	byte					ChannelCount;
-	byte					ServerId;
+class WarTimer {
+    uint        TimeRemainingTimer;
+    uint        TimeAttackTimer;
+    byte        IsTimeAttackEnabled;
+}
+
+class War {
+	uint        LobbyEntryOrder;
+    WarTimer    LobbyTimer;
+    WarTimer    BattleFieldTimer;
+    [Length(2)]
+    int[]       NationScore;
+    [Length(2)] 
+    int[]       NationPoints;
+    int         EntryLimitPerNation;
+    [Length(2)] 
+    int[]       NationBattleFieldTicketCount;
+    uint        WorldType;
+}
+
+class Server {
+    byte					ServerId;
 	byte					ChannelId;
 	ushort					UserCount;
 	ulong					u0;
@@ -383,6 +389,16 @@ class Message {
 	byte					WarMapId;
 	byte					u4;
 	byte					u5;
+}
+
+class Message {
+	War                     War;
+	bool					HasWarehousePassword;
+	bool					HasInventoryPassword;
+	bool					WarehouseLocked;
+	bool					InventoryLocked;
+	byte					ChannelCount;
+	Server                  Server;
 	ObjectIndexData			UserId;
 	uint					World;
 	uint					Dungeon;
@@ -399,7 +415,7 @@ class Message {
 	uint					StatPoints;
 	uint					SkillRank;
 	uint					MagicSkillRank; /* Not in use */
-	ulong					MaximumHP;
+	ulong					BaseHP;
 	ulong					CurrentHP;
 	uint					MaximumMP;
 	uint					CurrentMP;
@@ -409,9 +425,9 @@ class Message {
 	uint					CurrentRage;
 	int						MaximumBP;
 	int						CurrentBP;
+	int						MaybeDPorBPTimer;
 	int						DungeonPoints;
 	int						DungeonPointsLifetime;
-	int						CharacterID;
 	int						SkillXP;
 	int						SkillXPLevel;
 	int						SkillPoints;
@@ -470,24 +486,20 @@ class Message {
 	byte					BlendedRuneCount;
 	/* 3 + BlendedRuneCount */
 	byte					BlendedRuneSlots;
-	byte					UnknownCount;
-	byte					UnknownCount1;
+	byte					KarmaAbilityCount;
+	byte					ExtendedKarmaAbilityCount;
 	[LengthFor("BlessingBeads")]
 	byte					BlessingBeadCount;
 	[LengthFor("PremiumServices")]
 	byte					PremiumServiceCount;
 	[LengthFor("Quests")]
 	ushort					QuestCount;
-	[Length(256)]
-	byte[]					QuestFlags;
-	[Length(256)]
-	byte[]					CompletedQuestFlags;
 	[Length(512)]
+	byte[]					CompletedQuestFlags;
+	[Length(128)]
 	byte[]					DeletedQuestFlags;
-	[Length(128)]
-	byte[]					QuestDungeonFlags;
-	[Length(128)]
-	byte[]					MissionDungeonFlags;
+	[Length(640)]
+	byte[]					FinishedDungeons;
 	[Length(4097)]
 	byte[]					UnknownFlags;
 	[LengthFor("DailyQuests")]
@@ -534,13 +546,11 @@ class Message {
 	[LengthFor("RequestCrafts")]
 	byte					RequestCraftCount;
 	ushort					RequestCraftExp;
-	[Length(114)]
+	[Length(1024)]
 	byte[]					RequestRecipeFlags;
-	[Length(910)]
-	byte[]					u19;
-	[Length(118)]
+	[Length(1024)]
 	byte[]					RequestFavoriteFlags;
-	[Length(922)]
+	[Length(16)]
 	byte[]					u20;
     uint GoldMeritCount;
     uint GoldMeritExp;
