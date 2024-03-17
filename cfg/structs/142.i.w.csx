@@ -539,8 +539,15 @@ class Message {
 	byte[]					u19;
 	[Length(118)]
 	byte[]					RequestFavoriteFlags;
-	[Length(943)]
+	[Length(922)]
 	byte[]					u20;
+    uint GoldMeritCount;
+    uint GoldMeritExp;
+    uint GoldMeritPoint;
+    byte PlatinumMeritCount;
+    uint PlatinumMeritExp;
+	[Length(2)]
+    uint PlatinumMeritPoint;
 	[LengthFor("Buffs")]
 	byte					BuffCount;
 	uint					u21;

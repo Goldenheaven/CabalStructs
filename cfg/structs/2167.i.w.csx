@@ -1,4 +1,4 @@
 
 class Message {
-	
+	ushort Result;
 }
