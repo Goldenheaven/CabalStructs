@@ -594,4 +594,49 @@ class Message {
 	byte[]					UnkXX12;
 	[Length(12)]
 	byte[]					ForceWingAbilities;
+	[Length(3173)]
+	byte[]					UnkXX13;
+	ulong					Unk115;
+	int						SpecialBoxID;
+	int						SpecialBoxID1;
+	Time64					Unk103;
+	Time64					Unk102;
+	uint					Unk104;
+	ulong					Unk105;
+	ulong					Unk106;
+	Time64					Unk001;
+	Time64					Unk002;
+	Time64					Unk003;
+	uint					Unk004;
+	ulong					Unk005;
+	[Length(48)]
+	byte[]					Unk006;
+	[LengthFor("Name", Operator.Add, 1)]
+	byte					NameLength;
+	string					Name;
+	Item[]					Equipment;
+	ushort[]				LockedEquipment;
+	Item[]					Inventory;
+	Skill[]					Skills;
+	Quickslot[]				Quickslots;
+	EssenceRune[]			EssenceRunes;
+	BlendedRune[]			BlendedRunes;
+	BlessingBead[]			BlessingBeads;
+	PremiumService[]		PremiumServices;
+	Quest[]					Quests;
+	ushort[]				DailyQuests;
+	Mercenary[]				Mercenaries;
+	/* ChangeShape Items Equipped */
+	ChangeShapeItem[]		ChangeShapeEquipped;
+	/* ChangeShape Items In Inventory */
+	ChangeShapeItem[]		ChangeShapeInventory;
+	Achievement[]			Achievements;
+	Title[]					Titles;
+	AchievementReward[]		AchievementRewards;
+	CraftsmansTokens[]		Crafts;
+	RequestCraft[]			RequestCrafts;
+	Buff[]					Buffs;
+	Item[]					VehicleWarehouse;
+	MeritAbility[]			MeritAbilities;
+	ForceGemConsumable[]	ForceGemConsumables;
 }
