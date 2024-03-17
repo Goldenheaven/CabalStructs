@@ -343,6 +343,21 @@ class CollectionList {
     ushort[] Slot;
 }
 
+class CostumeWarehouseItem{
+	ulong	u1;
+	ulong	u2;
+	ulong	u3;
+	ulong	u4;
+	ulong	u5;
+	ulong	u6;
+	ulong	u7;
+	ulong	u8;
+	uint	u9;
+	byte	u10;
+	byte	u11;
+	byte	u12;
+}
+
 class Message {
 	uint					LobbyEntryOrder;
 	uint					LobbySecondsLeft;
@@ -566,49 +581,22 @@ class Message {
 	int						ForceGems;
 	[LengthFor("ForceGemConsumables")]
 	int						ForceGemConsumableCount;
-	[Length(3340)]
-	byte[]					UnkXX;
-	ulong					Unk115;
-	int						SpecialBoxID;
-	int						SpecialBoxID1;
-	Time64					Unk103;
-	Time64					Unk102;
-	uint					Unk104;
-	ulong					Unk105;
-	ulong					Unk106;
-	Time64					Unk001;
-	Time64					Unk002;
-	Time64					Unk003;
-	uint					Unk004;
-	ulong					Unk005;
-	[Length(48)]
-	byte[]					Unk006;
-	[LengthFor("Name", Operator.Add, 1)]
-	byte					NameLength;
-	string					Name;
-	Item[]					Equipment;
-	ushort[]				LockedEquipment;
-	Item[]					Inventory;
-	Skill[]					Skills;
-	Quickslot[]				Quickslots;
-	EssenceRune[]			EssenceRunes;
-	BlendedRune[]			BlendedRunes;
-	BlessingBead[]			BlessingBeads;
-	PremiumService[]		PremiumServices;
-	Quest[]					Quests;
-	ushort[]				DailyQuests;
-	Mercenary[]				Mercenaries;
-	/* ChangeShape Items Equipped */
-	ChangeShapeItem[]		ChangeShapeEquipped;
-	/* ChangeShape Items In Inventory */
-	ChangeShapeItem[]		ChangeShapeInventory;
-	Achievement[]			Achievements;
-	Title[]					Titles;
-	AchievementReward[]		AchievementRewards;
-	CraftsmansTokens[]		Crafts;
-	RequestCraft[]			RequestCrafts;
-	Buff[]					Buffs;
-	Item[]					VehicleWarehouse;
-	MeritAbility[]			MeritAbilities;
-	ForceGemConsumable[]	ForceGemConsumables;
+	[Length(32)]
+	byte[]					UnkXX11;
+    byte 					ForceWingRank;
+    byte 					ForceWingLevel;
+    ulong 					ForceWingExp;
+	[Length(9)]
+	byte[]					ForceWingUnk1;
+	[Length(5)]
+	byte[]					ForceWingPresetFlags;
+	uint					ForceWingPoints;
+	[Length(16)]
+	byte[]					ForceWingUnk2;
+	byte					ForceWingSkillSlotCount;
+	byte					ForceWingTrainingSlotCount;
+	[Length(77)]
+	byte[]					UnkXX12;
+	[Length(12)]
+	byte[]					ForceWingAbilities;
 }
