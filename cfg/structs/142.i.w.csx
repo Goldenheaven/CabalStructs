@@ -599,18 +599,27 @@ class Message {
 	ulong					Unk115;
 	int						SpecialBoxID;
 	int						SpecialBoxID1;
+	int						UnkX005;
+	uint					UnkX106;
 	Time64					Unk103;
 	Time64					Unk102;
-	uint					Unk104;
 	ulong					Unk105;
-	ulong					Unk106;
+	uint					Unk106;
 	Time64					Unk001;
 	Time64					Unk002;
 	Time64					Unk003;
-	uint					Unk004;
 	ulong					Unk005;
-	[Length(48)]
-	byte[]					Unk006;
+	[Length(4)]
+	byte[]					UnkX006;
+	uint					Unki;
+    int 					TakenEventPassRewardCount;
+    int 					AccountCostumeSlotCount;
+    int 					UnkX12432;
+    int 					CostumePageCount;
+    int 					UnknownCostumeSlotCount;
+	int 					ActiveCostumePageIndex;
+	[Length(20)]
+	byte[]					EP37Expansion;
 	[LengthFor("Name", Operator.Add, 1)]
 	byte					NameLength;
 	string					Name;
