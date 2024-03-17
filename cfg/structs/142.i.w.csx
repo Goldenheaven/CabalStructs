@@ -530,8 +530,9 @@ class Message {
 	[Length(6)]
 	byte[]					u18;
     byte 					SortingOrderMask;
+    byte                    u181;
 	[LengthFor("RequestCrafts")]
-	ushort					RequestCraftCount;
+	byte					RequestCraftCount;
 	ushort					RequestCraftExp;
 	[Length(114)]
 	byte[]					RequestRecipeFlags;
