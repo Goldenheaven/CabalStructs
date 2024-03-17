@@ -594,8 +594,9 @@ class Message {
 	byte[]					UnkXX12;
 	[Length(12)]
 	byte[]					ForceWingAbilities;
-	[Length(3173)]
-	byte[]					UnkXX13;
+	[Length(793)]
+	uint[]					UnkXX13;
+	byte					UnkXX14;
 	ulong					Unk115;
 	int						SpecialBoxID;
 	int						SpecialBoxID1;
