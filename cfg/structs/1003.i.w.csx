@@ -63,98 +63,120 @@ class MysteryBoxItem {
 	uint u1,u2,u3;
 }
 
-class Event {
-	uint EventId;
-
-	int GetEventType(){
-		if( EventId==157 || EventId==158 )
-			return (int)EventType.CollectEvent;
-		else if( EventId == 153 )
-			return (int)EventType.PandoraEvent;
-
-		return (int)EventType.Overview;
-	}
-	
-	enum EventType {
-		MysteryBox,
-		CollectEvent,
-		PandoraEvent,
-		Overview
-	}
-	
-	class Overview {
-	
-	}
-
-	class CollectEvent {
-		[LengthFor("EventStrings")]
-		ushort StringCount;
-		EventString[] EventStrings;
-		uint u1;	
-		[LengthFor("CollectEventItems")]
-		ushort ItemCount;
-		CollectEventItem[] CollectEventItems;
-		uint u2;	
-	}
-
-	class PandoraEvent {
-		[LengthFor("EventStrings")]
-		ushort StringCount;
-		EventString[] EventStrings;
-		uint u1;	
-		[LengthFor("CollectEventItems")]
-		ushort ItemCount;
-		CollectEventItem[] CollectEventItems;
-		byte u2;
-		string EventName;
-		uint u3;
-		byte u4;
-		ushort u5;
-		uint u6;
-		[LengthFor("UnkData")]
-		ushort UnkCount;
-		[LengthFor("RewardItems")]
-		ushort RewardCount;
-		UnknownData[] UnkData;
-		PandoraRewardItem[] RewardItems;
-		ushort u7;
-		byte u8;
-	}
 
 	
-	class MysteryBoxName {
-			uint BoxId;
-			[Length(21)]
-			string BoxName;
-			uint u0;
-	}
+class Overview {
+	[LengthFor("EventStrings")]
+	byte TextCount;
+	byte PageCount;
+	EventString[] EventStrings;
+	uint u1;
+	[LengthFor("CollectEventItems")]
+	ushort ItemCount;
+	CollectEventItem
+	CollectEventItems;
+}
+
+class CollectEvent {
+	uint SlotId;
+	CollectEventItem IITem;
+}
+
+class PandoraEvent {
+	[LengthFor("EventStrings")]
+	ushort StringCount;
+	EventString[] EventStrings;
+	uint u1;	
+	[LengthFor("CollectEventItems")]
+	ushort ItemCount;
+	CollectEventItem[] CollectEventItems;
+	byte u2;
+	string EventName;
+	uint u3;
+	byte u4;
+	ushort u5;
+	uint u6;
+	[LengthFor("UnkData")]
+	ushort UnkCount;
+	[LengthFor("RewardItems")]
+	ushort RewardCount;
+	UnknownData[] UnkData;
+	PandoraRewardItem[] RewardItems;
+	ushort u7;
+	byte u8;
+}
+
 	
-	class MysteryBox {
-		byte u0;
+class MysteryBoxName {
+		uint BoxId;
+		[Length(21)]
 		string BoxName;
-		ushort u1;
-		[LengthFor("MysteryBoxData")]
-		ushort MysteryBoxDataCount;
-		[LengthFor("MysteryBoxItems")]
-		ushort MysteryBoxItemCount;
-		[LengthFor("MysteryBoxNames")]
-		ushort MysteryBoxCount;
-		MysteryBoxData[] MysteryBoxData;
-		MysteryBoxItem[] MysteryBoxItems;
-		MysteryBoxName[] MysteryBoxNames;
-		ushort u2;
-		byte u3;
-	}
-	
-	[Variant(typeof(EventType), "GetEventType")]
-	object EventData;
-	
+		uint u0;
+}
+
+class MysteryBox {
+	byte u0;
+	string BoxName;
+	ushort u1;
+	[LengthFor("MysteryBoxData")]
+	ushort MysteryBoxDataCount;
+	[LengthFor("MysteryBoxItems")]
+	ushort MysteryBoxItemCount;
+	[LengthFor("MysteryBoxNames")]
+	ushort MysteryBoxCount;
+	MysteryBoxData[] MysteryBoxData;
+	MysteryBoxItem[] MysteryBoxItems;
+	MysteryBoxName[] MysteryBoxNames;
+	ushort u2;
+	byte u3;
+}
+
+class ExchangeItem{
+	ItemKind	UnkId1;
+	ulong		UnkItemOption;
+	byte		Nation;
+	uint		ExternalID;
+	uint		TextureID;
+	ulong		Price;
+	uint		PriceTPoint;
+	ushort		PriceCash;
+}
+
+class ItemShopItem {
+	uint			SlotId;
+	ItemKind		ItemID;
+	ulong			ItemOption;
+	byte			Nation;
+	uint			LinkID;
+	uint			TextureID;
+	ulong			AlzPrice;
+	uint			Unk3;
+	uint			ItemCostCount;
+	[Length(0)]
+	ExchangeItem[]	ExchangeItems;
+	byte			EventCounteri3;
+	byte			EventCounteri4;
+	byte			EventCounteri5;
+}
+
+class Event {
+	uint 			EventId;
+	[LengthFor("EventStrings")]
+	ushort 			StringCount;
+	EventString[]	EventStrings;
+	byte			EventCounter1;
+	byte			EventCounter2;
+	byte			EventCounter3;
+	byte			EventCounter4;
+	[LengthFor("ItemShopData")]
+	ushort			ItemShopCounter;
+	ItemShopItem[]	ItemShopData;
 }
 
 class Message {
 	byte u0;
-	[LengthFor("Events")]
 	byte EventCount;
 	uint u1;
+	[Length(2)]
 	Event[] Events;
 }

@@ -5,6 +5,7 @@ class EventItem {
 	ulong		ItemOption;
 	uint		ExternalID;
 	uint		TextureItemID;
+	byte		Unk;
 	string		ItemName;
 	string		ItemDescription;
 }
@@ -19,11 +20,8 @@ class Event {
 	uint			u1;
 	uint			WorldID;
 	uint			NpcID;
-	[Length(32)]
-	uint[]			u2;
-    ushort          u3;
-    uint            u4;
-    ulong           u5;
+	[Length(142)]
+	byte[]			u2;
 	string			EventName;
 	[LengthFor("Items")]
 	ushort			Count;
