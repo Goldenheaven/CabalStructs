@@ -1,1 +1,1 @@
-RSP : ChangeBingoBoard
+RSP : NPCEventAction

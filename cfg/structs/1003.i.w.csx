@@ -142,6 +142,12 @@ class ExchangeItem{
 	ushort		PriceCash;
 }
 
+class ItemCost {
+    ulong ItemID;
+    ulong ItemOption;
+    uint ItemCount;
+}
+
 class ItemShopItem {
 	uint			SlotId;
 	ItemKind		ItemID;
@@ -150,13 +156,13 @@ class ItemShopItem {
 	uint			LinkID;
 	uint			TextureID;
 	ulong			AlzPrice;
-	uint			Unk3;
+    ushort          u0;
+    [LengthFor("ItemCost")]
 	uint			ItemCostCount;
+    ushort          u1;
 	[Length(0)]
 	ExchangeItem[]	ExchangeItems;
-	byte			EventCounteri3;
-	byte			EventCounteri4;
-	byte			EventCounteri5;
+    ItemCost[]      ItemCost;
 }
 
 class Event {
@@ -164,19 +170,22 @@ class Event {
 	[LengthFor("EventStrings")]
 	ushort 			StringCount;
 	EventString[]	EventStrings;
-	byte			EventCounter1;
-	byte			EventCounter2;
-	byte			EventCounter3;
-	byte			EventCounter4;
+	ushort			EventCounter1;
+	ushort			EventCounter2;
 	[LengthFor("ItemShopData")]
 	ushort			ItemShopCounter;
 	ItemShopItem[]	ItemShopData;
+	byte			EventCounter3;
+	ushort			BingoCounter;
+    byte            BingoCounter2;
+    byte            PeriodCounter;
+    ushort          DungeonCount;
 }
 
 class Message {
 	byte u0;
+    [LengthFor("Events")]
 	byte EventCount;
 	uint u1;
-	[Length(2)]
 	Event[] Events;
 }
