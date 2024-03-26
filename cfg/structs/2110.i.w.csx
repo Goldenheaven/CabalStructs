@@ -7,5 +7,9 @@ class Message {
 	short	u4;
 	int		u5;
 	int		u6;
-	byte	u7;
+    int     u7;
+    int     u8;
+    int     u9;
+    int     u10;
+    short   u11;
 }
